@@ -7,25 +7,29 @@ from collections import deque
 
 n, k = map(int, input().split(' '))
 queue = deque()
-second = [-1] * 100001
-second[n] = 0
+second = [False] * 100001
+result = 0
+
+second[n] = True
 queue.append((n, 0))     # n 부터 탐색 시작
 
 while queue:
     now, sec = queue.popleft()
-    sec += 1
-
+    
     if now == k:
+        result = sec
         break
 
-    if now + 1 <= 100000 and second[now + 1] == -1:
-        second[now + 1] = sec
+    sec += 1
+    
+    if now - 1 >= 0 and not second[now - 1]:
+            second[now - 1] = True
+            queue.append((now - 1, sec))
+    if now + 1 <= 100000 and not second[now + 1]:
+        second[now + 1] = True
         queue.append((now + 1, sec))
-    if now - 1 > 0 and second[now - 1] == -1:
-        second[now - 1] = sec
-        queue.append((now - 1, sec))
-    if now * 2 <= 100000 and second[now * 2] == -1:
-        second[now * 2] = sec
+    if now * 2 <= 100000 and not second[now * 2]:
+        second[now * 2] = True
         queue.append((now * 2, sec))
     
-print(second[k])
+print(result)
