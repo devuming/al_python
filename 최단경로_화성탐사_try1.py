@@ -1,7 +1,6 @@
 # 화성탐사 (2022.08.03 try1)
 # N * N 공간에서 [0][0]-> [N-1][N-1] 로 이동하는 최소 비용 출력
 # 다익스트라 방식
-from ctypes.wintypes import PUSHORT
 import heapq
 
 INF = 9999999
@@ -17,7 +16,7 @@ for _ in range(t):
     for _ in range(n):
         graph.append(list(map(int, input().split(' '))))
     
-    x, y = 0, 0     # 출발 노드
+    x, y = 0, 0     # 출발 노드 
     heapq.heappush(q, (graph[x][y], x, y))        
     distance[x][y] = graph[x][y]
 
