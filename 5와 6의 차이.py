@@ -7,4 +7,4 @@ s = input()
 max_v = list(map(int, s.replace('5', '6').split()))
 min_v = list(map(int, s.replace('6', '5').split()))
 
-print(min(sum(max_v), sum(min_v)), max(sum(max_v), sum(min_v)))
+print(sum(min_v), sum(max_v))
