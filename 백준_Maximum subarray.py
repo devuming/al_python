@@ -19,7 +19,6 @@ for _ in range(t):
     for i in range(1, n):
         dp[i] = max(dp[i - 1] + x[i], x[i])
         
-    print(dp)
     max_val.append(max(dp))
 
 for m in max_val:
